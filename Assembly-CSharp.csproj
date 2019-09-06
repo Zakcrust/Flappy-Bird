@@ -2,8 +2,6 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <CscToolPath>/home/zak/Unity/Hub/Editor/2019.2.0f1/Editor/Data/Tools/RoslynScripts</CscToolPath>
-    <CscToolExe>unity_csc.sh</CscToolExe>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -62,6 +60,7 @@
      <Compile Include="Assets\Scripts\GroundSpawner.cs" />
      <Compile Include="Assets\Scripts\Pipe.cs" />
      <Compile Include="Assets\Scripts\PipeSpawner.cs" />
+     <Compile Include="Assets\Scripts\Point.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/home/zak/Flappy-Bird/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

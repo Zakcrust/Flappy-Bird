@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class PipeSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private Bird bird;
-    [SerializeField]
-    private float spawnInterval = 1;
-    [SerializeField]
-    private Pipe pipeUp,pipeDown;
-    [SerializeField]
-    private float holeSize = 1f;
-    [SerializeField]
-    private float maxMinOffset = 1f;
+    [SerializeField] private Bird bird;
+    [SerializeField] private float spawnInterval = 1;
+    [SerializeField] private Pipe pipeUp,pipeDown;
+    [SerializeField] Point point;
+    [SerializeField] private float holeSize = 1f;
+    [SerializeField] private float maxMinOffset = 1f;
+    
 
     private Coroutine CR_Spawn;
     // Start is called before the first frame update
@@ -47,6 +44,10 @@ public class PipeSpawner : MonoBehaviour
         Pipe newPipeDown = Instantiate(pipeDown,transform.position,Quaternion.identity);
         newPipeDown.gameObject.SetActive(true);
 
+        Point newPoint = Instantiate(point,transform.position,Quaternion.identity);
+        newPoint.gameObject.SetActive(true);
+        newPoint.setSize(holeSize);
+
         newPipeUp.transform.position += Vector3.up * (holeSize / 2);
         newPipeDown.transform.position += Vector3.down * (holeSize / 2);
 
@@ -56,6 +57,7 @@ public class PipeSpawner : MonoBehaviour
 
         newPipeUp.transform.position += Vector3.up * y;
         newPipeDown.transform.position += Vector3.up * y;
+        newPoint.transform.position += Vector3.up * y;
     }
     
     IEnumerator IeSpawn()

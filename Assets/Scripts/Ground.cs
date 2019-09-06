@@ -26,11 +26,13 @@ public class Ground : MonoBehaviour
         }
     }
 
-    private void OnCollosionEnter2D(Collider2D collosion)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(bird != null && !bird.IsDead())
+        //Membuat burung mati ketika bersentuhan dengan game object ini
+        if (bird != null && !bird.IsDead())
         {
             bird.Dead();
         }
     }
+
 }

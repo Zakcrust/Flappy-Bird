@@ -8,7 +8,7 @@ public class Ground : MonoBehaviour
     [SerializeField] private Bird bird;
     [SerializeField] private float speed = 1;
     [SerializeField] private Transform nextPos;
-
+    [SerializeField] private string objectTag = "ground";
     // Update is called once per frame
     void Update()
     {
@@ -31,7 +31,7 @@ public class Ground : MonoBehaviour
         //Membuat burung mati ketika bersentuhan dengan game object ini
         if (bird != null && !bird.IsDead())
         {
-            bird.Dead();
+            bird.Dead("ground");
         }
     }
 

@@ -9,34 +9,62 @@ public class Bird : MonoBehaviour {
 
 	[SerializeField] private float upForce = 100;
 	[SerializeField] public bool isDead;
-	[SerializeField] private UnityEvent OnJump, OnDead, onAddPoint;
+	[SerializeField] private UnityEvent OnJump, OnDead,OnHit, OnAddPoint;
 	[SerializeField] private int score;
-    [SerializeField] private Text scoreText;
+    [SerializeField] private Text scoreText,livesText;
+	[SerializeField] private int Lives = 3;
+	private bool freezeBird = false;
 	private Animator animator;
-
+	private Vector3 startPosition;
+	private float holeY;
 	private Rigidbody2D rigidBody2d;
 	// Use this for initialization
 
 	void Start () {
 		rigidBody2d = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
+		startPosition = transform.position;
+		setLives(Lives);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (!isDead && Input.GetMouseButtonDown(0)) {
+		if (!isDead && Input.GetMouseButtonDown(0) && !freezeBird) {
 			Jump ();
 		}
 
 	}
 
+	public void setHoleY(float pos)
+	{
+		holeY = pos;
+	}
 	public bool IsDead() {
 		return isDead;
 	}
 
-	public void Dead() {
+	public int getLives()
+	{
+		return Lives;
+	}
+	public void Dead(string tag) {
 		
+		decreaseLive();
+
+		if(Lives>0 && !freezeBird)
+		{
+			if(tag == "ground")
+			{
+                Hit();
+			}
+			else if(tag == "pipe")
+			{
+				pipeHit();
+			}
+			return;
+		}
+
 		if (!isDead && OnDead != null) {
             OnDead.Invoke();		
 		}
@@ -45,14 +73,43 @@ public class Bird : MonoBehaviour {
 
 	}   
 
+	private void Hit()
+	{
+		setPosition(startPosition);
+		OnHit.Invoke();
+	}
+
+	private void setPosition(Vector3 pos)
+	{
+		transform.position = pos;
+	}
+
+	private void pipeHit()
+	{
+		OnHit.Invoke();
+		setPosition(startPosition);
+        transform.position = new Vector3(transform.position.x, holeY, transform.position.z);
+	}
+
 	public void AddScore(int value)
 	{
 		score += value;
-		if(onAddPoint != null)
+		if(OnAddPoint != null)
 		{
-			onAddPoint.Invoke();
+			OnAddPoint.Invoke();
 			scoreText.text = score.ToString();
 		}
+	}
+
+	private void setLives(int lives)
+	{
+		livesText.text = "Lives : "+ lives.ToString();
+	}
+
+	private void decreaseLive()
+	{
+		Lives--;
+		setLives(Lives);
 	}
 
 	void Jump(){

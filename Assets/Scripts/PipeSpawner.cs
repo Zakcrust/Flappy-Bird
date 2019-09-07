@@ -71,8 +71,15 @@ public class PipeSpawner : MonoBehaviour
 
             SpawnPipe();
 
+            randomSpawnInterval();
+            
             yield return new WaitForSeconds(spawnInterval);
         }
+    }
+
+    private void randomSpawnInterval()
+    {
+        spawnInterval = Random.Range(2.0f,4.0f);
     }
 
 }

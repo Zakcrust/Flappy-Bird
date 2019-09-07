@@ -8,7 +8,7 @@ public class Pipe : MonoBehaviour
 {
     [SerializeField] private Bird bird;
     [SerializeField] private float speed = 1;
-    
+    [SerializeField] private string objectTag = "pipe";
     // Start is called before the first frame update
     
     // Update is called once per frame
@@ -28,12 +28,12 @@ public class Pipe : MonoBehaviour
         {
             Collider2D collider = GetComponent<Collider2D>();
 
-            if(collider)
+            if(collider && bird.getLives() <= 0)
             {
                 collider.enabled = false;
             }
 
-            bird.Dead();
+            bird.Dead("pipe");
 
         }
     }

@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\PipeSpawner.cs" />
      <Compile Include="Assets\Scripts\Point.cs" />
      <Compile Include="Assets\Scripts\SceneLoader.cs" />
+     <Compile Include="Assets\Scripts\WaitForSecond.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/home/zak/Flappy-Bird/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

@@ -16,7 +16,7 @@ public class Bird : MonoBehaviour {
 	private bool freezeBird = false;
 	private Animator animator;
 	private Vector3 startPosition;
-	private float holeY;
+	private float pipeY;
 	private Rigidbody2D rigidBody2d;
 	// Use this for initialization
 
@@ -36,9 +36,9 @@ public class Bird : MonoBehaviour {
 
 	}
 
-	public void setHoleY(float pos)
+	public void setPipeY(float yPos)
 	{
-		holeY = pos;
+		pipeY = yPos;
 	}
 	public bool IsDead() {
 		return isDead;
@@ -88,7 +88,7 @@ public class Bird : MonoBehaviour {
 	{
 		OnHit.Invoke();
 		setPosition(startPosition);
-        transform.position = new Vector3(transform.position.x, holeY, transform.position.z);
+        transform.position = new Vector3(transform.position.x, pipeY + 0.5f, transform.position.z);
 	}
 
 	public void AddScore(int value)

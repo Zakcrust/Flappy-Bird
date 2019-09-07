@@ -36,13 +36,4 @@ public class Point : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        Bird bird = collision.gameObject.GetComponent<Bird>();
-
-        if(bird)
-        {
-            bird.setHoleY(transform.position.y);
-        }
-    }
 }

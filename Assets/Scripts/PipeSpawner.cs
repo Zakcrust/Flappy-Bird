@@ -10,8 +10,6 @@ public class PipeSpawner : MonoBehaviour
     [SerializeField] Point point;
     [SerializeField] private float holeSize = 1f;
     [SerializeField] private float maxMinOffset = 1f;
-    
-
     private Coroutine CR_Spawn;
     // Start is called before the first frame update
     void Start()

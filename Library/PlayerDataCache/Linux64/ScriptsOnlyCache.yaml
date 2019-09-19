@@ -136,8 +136,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 82
       Script: {instanceID: 0}
-    - Class: 83
-      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 91
@@ -663,6 +661,6 @@ ScriptsOnlyBuild:
     className: WaitForSecond
   platform: 24
   scenePathNames:
-  - Assets/FlappyBirdMain.unity
   - Assets/Opening.unity
+  - Assets/FlappyBirdMain.unity
   playerPath: /home/zak/Flappy-Bird/ZakFlappyBird.x86_64
